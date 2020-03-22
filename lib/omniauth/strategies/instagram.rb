@@ -28,10 +28,13 @@ module OmniAuth
       uid { raw_info['id'] }
 
       info { raw_info }
+      
+      def fields
+        fields ||= options[:fields] || 'account_type,id,media_count,username'
+      end
 
       def raw_info
         endpoint = '/me'
-        fields = 'account_type,id,media_count,username'
         @raw_info ||= access_token.get("#{endpoint}?fields=#{fields}").parsed
       end
 
