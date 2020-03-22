@@ -30,7 +30,7 @@ module OmniAuth
       info { raw_info }
       
       def fields
-        fields ||= options[:fields] || 'account_type,id,media_count,username'
+        @fields ||= options[:fields] || 'account_type,id,media_count,username'
       end
 
       def raw_info
